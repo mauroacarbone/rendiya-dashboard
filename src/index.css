@@ -1,0 +1,40 @@
+:root {
+  --ink: #12263a;
+  --muted: #5b6b7a;
+  --bg: #f4f1ea;
+  --paper: #fffdf8;
+  --line: #d9d3c7;
+  --accent: #0f6e56;
+  --accent-hover: #0c5a46;
+  --danger: #9b2c2c;
+  --ok: #2f6b3a;
+  --sans: "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}

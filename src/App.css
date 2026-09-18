@@ -1,0 +1,208 @@
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 8px 0 24px;
+}
+
+.auth-layout {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card,
+.panel,
+.topbar {
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.auth-card {
+  width: min(420px, 100%);
+  padding: 32px;
+}
+
+.auth-card h1,
+.topbar h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+form,
+.inline-form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  font-size: 14px;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+button {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+button.ghost,
+button.linkish,
+button.danger {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+button.linkish {
+  margin-top: 16px;
+  width: 100%;
+}
+
+button.danger {
+  color: var(--danger);
+}
+
+.alert,
+.notice {
+  padding: 10px 12px;
+  margin: 12px 0;
+}
+
+.alert {
+  background: #fde8e8;
+  color: var(--danger);
+}
+
+.notice {
+  background: #e7f4ea;
+  color: var(--ok);
+}
+
+.app-shell {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  display: grid;
+  gap: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  align-items: center;
+}
+
+.session {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.panel {
+  padding: 20px 24px;
+}
+
+.panel h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.inline-form {
+  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+}
+
+.reservation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.reservation-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  align-items: center;
+}
+
+.reservation-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.reservation-list strong {
+  margin-right: 10px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+}
+
+.badge-pending {
+  background: #fff6d8;
+}
+
+.badge-confirmed {
+  background: #e7f4ea;
+}
+
+.badge-cancelled {
+  background: #fde8e8;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .topbar,
+  .inline-form,
+  .reservation-list li {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inline-form {
+    display: grid;
+  }
+}
