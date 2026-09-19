@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAuth } from '../auth/AuthContext'
 
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'http://localhost:3000'
+
 export default function AuthScreen() {
   const { login, register } = useAuth()
   const [mode, setMode] = useState('login')
@@ -33,11 +35,12 @@ export default function AuthScreen() {
   return (
     <main className="auth-layout">
       <section className="auth-card">
-        <p className="eyebrow">Central RendiYa</p>
+        <a className="logo-word" href={SITE_URL}>
+          Rendi<span>Ya</span>
+        </a>
+        <p className="eyebrow">Mis reservas</p>
         <h1>{isRegister ? 'Crear cuenta' : 'Entrar'}</h1>
-        <p className="lead">
-          Conectado a la API de reservas: login, registro y turnos.
-        </p>
+        <p className="lead">Mirá y gestioná tus turnos con la misma cuenta de RendiYa.</p>
 
         <form onSubmit={onSubmit}>
           {isRegister && (

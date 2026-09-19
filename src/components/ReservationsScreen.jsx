@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { reservationsApi } from '../api/client'
 import { useAuth } from '../auth/AuthContext'
 
+const SITE_URL = import.meta.env.VITE_SITE_URL || 'http://localhost:3000'
+
 const STATUS_LABEL = {
   pending: 'Pendiente',
   confirmed: 'Confirmada',
@@ -88,8 +90,11 @@ export default function ReservationsScreen() {
     <div className="app-shell">
       <header className="topbar">
         <div>
-          <p className="eyebrow">Central RendiYa</p>
-          <h1>Reservas</h1>
+          <a className="logo-word" href={SITE_URL}>
+            Rendi<span>Ya</span>
+          </a>
+          <p className="eyebrow">Mis reservas</p>
+          <h1>Turnos</h1>
         </div>
         <div className="session">
           <p>
@@ -100,6 +105,11 @@ export default function ReservationsScreen() {
           </button>
         </div>
       </header>
+      <p>
+        <a className="back-link" href={SITE_URL}>
+          ← Volver al sitio
+        </a>
+      </p>
 
       <section className="panel">
         <h2>Nueva reserva</h2>

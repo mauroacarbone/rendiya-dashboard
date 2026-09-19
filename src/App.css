@@ -1,9 +1,25 @@
+.logo-word {
+  font-size: 28px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo-word span {
+  color: var(--cyan);
+}
+
 .eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 12px;
-  color: var(--accent);
-  margin-bottom: 8px;
+  display: inline-block;
+  background: rgba(34, 211, 238, 0.16);
+  color: var(--cyan);
+  font-weight: 700;
+  font-family: var(--heading);
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .lead {
@@ -21,19 +37,22 @@
 .auth-card,
 .panel,
 .topbar {
-  background: var(--paper);
+  background: var(--glass);
   border: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--sombra);
 }
 
 .auth-card {
   width: min(420px, 100%);
   padding: 32px;
+  border-radius: 18px;
 }
 
 .auth-card h1,
 .topbar h1 {
   font-size: 32px;
-  font-weight: 600;
+  color: #fff;
 }
 
 form,
@@ -49,22 +68,28 @@ label {
   font-size: 14px;
 }
 
-input {
-  padding: 10px 12px;
+input,
+select {
+  padding: 12px 14px;
   border: 1px solid var(--line);
-  background: #fff;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--text);
 }
 
 button {
   border: 0;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--violet), var(--blue));
   color: #fff;
-  padding: 10px 14px;
+  padding: 10px 16px;
   cursor: pointer;
+  font-family: var(--heading);
+  font-weight: 700;
+  border-radius: 999px;
 }
 
 button:hover:not(:disabled) {
-  background: var(--accent-hover);
+  filter: brightness(1.08);
 }
 
 button:disabled {
@@ -75,8 +100,8 @@ button:disabled {
 button.ghost,
 button.linkish,
 button.danger {
-  background: transparent;
-  color: var(--ink);
+  background: var(--glass);
+  color: var(--text);
   border: 1px solid var(--line);
 }
 
@@ -93,15 +118,18 @@ button.danger {
 .notice {
   padding: 10px 12px;
   margin: 12px 0;
+  border-radius: 12px;
 }
 
 .alert {
-  background: #fde8e8;
+  background: rgba(251, 113, 133, 0.12);
+  border: 1px solid rgba(251, 113, 133, 0.35);
   color: var(--danger);
 }
 
 .notice {
-  background: #e7f4ea;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.35);
   color: var(--ok);
 }
 
@@ -119,6 +147,7 @@ button.danger {
   gap: 16px;
   padding: 20px 24px;
   align-items: center;
+  border-radius: 18px;
 }
 
 .session {
@@ -131,11 +160,13 @@ button.danger {
 
 .panel {
   padding: 20px 24px;
+  border-radius: 18px;
 }
 
 .panel h2 {
   font-size: 18px;
   margin-bottom: 16px;
+  color: #fff;
 }
 
 .inline-form {
@@ -173,24 +204,34 @@ button.danger {
   font-size: 12px;
   padding: 2px 8px;
   border: 1px solid var(--line);
+  border-radius: 999px;
 }
 
 .badge-pending {
-  background: #fff6d8;
+  background: rgba(251, 191, 36, 0.16);
+  color: #fbbf24;
 }
 
 .badge-confirmed {
-  background: #e7f4ea;
+  background: rgba(52, 211, 153, 0.16);
+  color: var(--emerald);
 }
 
 .badge-cancelled {
-  background: #fde8e8;
+  background: rgba(251, 113, 133, 0.16);
+  color: var(--danger);
 }
 
 .actions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.back-link {
+  color: var(--cyan);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 @media (max-width: 720px) {

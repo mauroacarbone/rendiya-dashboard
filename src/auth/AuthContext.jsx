@@ -4,7 +4,40 @@ import { ApiError, authApi } from '../api/client'
 const STORAGE_KEY = 'rendiya-session'
 const AuthContext = createContext(null)
 
+function userFromToken(token) {
+  try {
+    const part = token.split('.')[1] || ''
+    const padded = part.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - (part.length % 4)) % 4)
+    const payload = JSON.parse(atob(padded))
+    return {
+      id: payload.id,
+      email: payload.email,
+      name: payload.name || payload.email,
+      role: payload.role,
+    }
+  } catch {
+    return { name: 'Usuario', email: '' }
+  }
+}
+
+function consumeTokenFromUrl() {
+  if (typeof window === 'undefined') return null
+  const params = new URLSearchParams(window.location.search)
+  const token = params.get('token')
+  if (!token) return null
+
+  const next = { user: userFromToken(token), token }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+  params.delete('token')
+  const query = params.toString()
+  window.history.replaceState({}, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`)
+  return next
+}
+
 function readSession() {
+  const fromUrl = consumeTokenFromUrl()
+  if (fromUrl) return fromUrl
+
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     return raw ? JSON.parse(raw) : { user: null, token: null }
