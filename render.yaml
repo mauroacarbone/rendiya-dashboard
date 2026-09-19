@@ -6,7 +6,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key: NODE_VERSION
-        value: 20
+        value: "20"
       - key: VITE_API_URL
         sync: false
       - key: VITE_SITE_URL
