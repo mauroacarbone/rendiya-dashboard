@@ -38,9 +38,9 @@ export default function AuthScreen() {
         <a className="logo-word" href={SITE_URL}>
           Rendi<span>Ya</span>
         </a>
-        <p className="eyebrow">Mis reservas</p>
+        <p className="eyebrow">Dashboard de reservas</p>
         <h1>{isRegister ? 'Crear cuenta' : 'Entrar'}</h1>
-        <p className="lead">Mirá y gestioná tus turnos con la misma cuenta de RendiYa.</p>
+        <p className="lead">Entrá con la misma cuenta del sitio para ver y gestionar tus turnos en tiempo real.</p>
 
         <form onSubmit={onSubmit}>
           {isRegister && (

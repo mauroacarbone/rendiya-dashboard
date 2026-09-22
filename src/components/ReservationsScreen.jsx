@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { reservationsApi } from '../api/client'
+import { reservationsApi, apiOrigin } from '../api/client'
 import { useAuth } from '../auth/AuthContext'
 
 const SITE_URL = import.meta.env.VITE_SITE_URL || 'http://localhost:3000'
@@ -40,6 +40,33 @@ export default function ReservationsScreen() {
   useEffect(() => {
     loadReservations()
     // token is stable for this screen
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token])
+
+  useEffect(() => {
+    if (!token || typeof window.io !== 'function') {
+      return undefined
+    }
+    const socket = window.io(apiOrigin(), {
+      auth: { token },
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+    })
+    socket.on('reservation_updated', (payload) => {
+      if (!payload || payload.reservationId == null) {
+        return
+      }
+      setReservations((current) =>
+        current.map((item) =>
+          Number(item.id) === Number(payload.reservationId)
+            ? { ...item, status: payload.status, updatedAt: payload.updatedAt }
+            : item
+        )
+      )
+    })
+    return () => {
+      socket.disconnect()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token])
 
@@ -93,7 +120,7 @@ export default function ReservationsScreen() {
           <a className="logo-word" href={SITE_URL}>
             Rendi<span>Ya</span>
           </a>
-          <p className="eyebrow">Mis reservas</p>
+          <p className="eyebrow">Dashboard de reservas</p>
           <h1>Turnos</h1>
         </div>
         <div className="session">

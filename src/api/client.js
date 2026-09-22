@@ -1,5 +1,9 @@
 const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:3001/api').replace(/\/$/, '')
 
+export function apiOrigin() {
+  return API_BASE.replace(/\/api$/i, '')
+}
+
 export class ApiError extends Error {
   constructor(message, status) {
     super(message)
