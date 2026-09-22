@@ -51,6 +51,12 @@ export const authApi = {
     apiRequest('/auth/register', { method: 'POST', body: { name, email, password } }),
 }
 
+export const venuesApi = {
+  list: () => apiRequest('/venues'),
+  availability: (slug, date) =>
+    apiRequest(`/venues/${encodeURIComponent(slug)}/availability?date=${encodeURIComponent(date)}`),
+}
+
 export const reservationsApi = {
   list: (token) => apiRequest('/reservations', { token }),
   create: (token, data) =>
